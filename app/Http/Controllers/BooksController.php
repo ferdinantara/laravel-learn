@@ -40,7 +40,40 @@ class BooksController extends Controller
 	    ]);
 	    // kembali ke page books
 	    return redirect('/books');
+	}
+	
+	// method untuk hapus data buku
+	public function delete($id)
+	{
+		// menghapus data buku berdasarkan id
+		DB::table('books')->where('id',$id)->delete();
+		
+		// alihkan halaman ke halaman utama
+		return redirect('/books');
+	}
 
-    }
+	// method untuk edit data
+	public function edit($id)
+	{
+		// mengambil data berdasarkan id
+		$books = DB::table('books')->where('id',$id)->get();
+		// passing data yang didapat ke view edit.blade.php
+		return view('edit',['books' => $books]);
+	}
+
+	// update data
+	public function update(Request $request)
+	{
+		// update data
+		DB::table('books')->where('id',$request->id)->update([
+			'id' => $request->id,
+		    'judul' => $request->judul,
+		    'penerbit' => $request->penerbit,
+		    'tahun_terbit' => $request->tahun_terbit,
+		    'pengarang' => $request->pengarang
+		]);
+		// alihkan halaman ke halaman utama
+		return redirect('/books');
+	}
 
 }

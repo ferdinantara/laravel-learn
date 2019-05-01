@@ -23,3 +23,12 @@ Route::get('/books/add','BooksController@add');
 
 //route store data
 Route::post('/books/store','BooksController@store');
+
+//route delete
+Route::get('/books/delete/{id}','BooksController@delete');
+
+//route edit
+Route::get('/books/edit/{id}','BooksController@edit');
+
+//route update data
+Route::post('/books/update','BooksController@update');
