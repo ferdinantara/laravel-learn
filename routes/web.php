@@ -18,16 +18,16 @@ Route::get('/', function () {
 //route index
 Route::get('/books','BooksController@index');
 
-//route add
+//route add data
 Route::get('/books/add','BooksController@add');
 
 //route store data
 Route::post('/books/store','BooksController@store');
 
-//route delete
+//route delete data
 Route::get('/books/delete/{id}','BooksController@delete');
 
-//route edit
+//route edit data
 Route::get('/books/edit/{id}','BooksController@edit');
 
 //route update data
